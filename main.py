@@ -1,6 +1,6 @@
 import pygame
 import random
-from objects2 import SpaceObject, create_object
+from objects import SpaceObject, create_object
 from config import screen, clock, objects
 
 # Inicialização do Pygame
