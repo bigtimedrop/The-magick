@@ -12,14 +12,13 @@ class SpaceObject:
         self.mass = mass
         self.resistencia = resistencia
         self.color = color
-        self.fragments = 0
 
     def draw(self):
         # Desenhar o corpo principal
         pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), int(self.mass**0.3))
         
         # Desenhar esfera de atração
-        attraction_radius = self.mass**0.5 * 10  # Ajuste o fator de escala
+        attraction_radius = self.mass**0.5 * 9  # Ajuste o fator de escala
         pygame.draw.circle(screen, (100, 100, 255), (int(self.x), int(self.y)), int(attraction_radius), 1)
 
         self.draw_force_vectors()
@@ -36,6 +35,7 @@ class SpaceObject:
 
     def update(self):
         ax, ay = 0, 0
+
         for obj in objects:
             if obj != self:
                 dx, dy = obj.x - self.x, obj.y - self.y
@@ -67,7 +67,7 @@ class SpaceObject:
             self.explode(obj)
 
     def explode(self, obj):
-        num_fragments = random.randint(2, 5)
+        num_fragments = random.randint(2, 4)
         for _ in range(num_fragments):
             fragment_mass = self.mass / num_fragments
             angle = random.uniform(0, 2 * math.pi)
@@ -76,17 +76,11 @@ class SpaceObject:
             objects.append(SpaceObject(self.x, self.y, vx, vy, fragment_mass, self.resistencia / num_fragments, random.choice(colors)))
 
         try:
-            if self in objects:
-                objects.remove(self)
-            if obj in objects:
-                objects.remove(obj)
+            objects.remove(self)
+            objects.remove(obj)
         except ValueError:
             pass
 
 def create_object(x, y, vx, vy, mass, resistencia):
-    # Escolha uma cor aleatória para o novo objeto
     color = random.choice(colors)
-    
-    # Adiciona o novo objeto à lista de objetos
-    new_obj = SpaceObject(x, y, vx, vy, mass, resistencia, color)
-    objects.append(new_obj)
+    objects.append(SpaceObject(x, y, vx, vy, mass, resistencia, color)
