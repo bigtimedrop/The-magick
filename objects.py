@@ -83,4 +83,4 @@ class SpaceObject:
 
 def create_object(x, y, vx, vy, mass, resistencia):
     color = random.choice(colors)
-    objects.append(SpaceObject(x, y, vx, vy, mass, resistencia, color)
+    objects.append(SpaceObject(x, y, vx, vy, mass, resistencia, color))
