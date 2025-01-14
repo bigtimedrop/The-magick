@@ -7,7 +7,7 @@ pygame.display.set_caption("Simulador de Física")
 clock = pygame.time.Clock()
 
 # Constante gravitacional
-G = 6.67430e-11
+G = 6.70
 
 # Escala para desenhar forças
 scale = 0.1
@@ -21,6 +21,8 @@ colors = [
     (0, 255, 0),  # Verde
     (0, 0, 255),  # Azul
     (255, 255, 0),  # Amarelo
+    (255, 165, 0),  # Laranja
+    (128, 0, 128),  # Roxo
     (255, 0, 255),  # Magenta
     (0, 255, 255),  # Ciano
 ]

@@ -15,10 +15,10 @@ class SpaceObject:
 
     def draw(self):
         # Desenhar o corpo principal
-        pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), int(self.mass**0.3))
+        pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), int(self.mass**0.03))
         
         # Desenhar esfera de atração
-        attraction_radius = self.mass**0.5 * 9  # Ajuste o fator de escala
+        attraction_radius = self.mass**0.25 * 5  # Ajuste o fator de escala
         pygame.draw.circle(screen, (100, 100, 255), (int(self.x), int(self.y)), int(attraction_radius), 1)
 
         self.draw_force_vectors()
